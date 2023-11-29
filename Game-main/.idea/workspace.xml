@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b561dfb6-7e89-4019-bf9d-fabd53b3228e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/GameRoom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/GameUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/KeyImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/Random/RandomNum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/RoomManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/TestClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/member/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/object/CoinPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/object/PlanetNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/main/object/Unit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/Back.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/GameCharacter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/GameObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/KeyControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/KeyImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/Meteor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/SpaceshipGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/Unit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/mini3/User.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/.gitignore" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/.gitignore" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/public/index.html" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/public/logo192.png" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/public/logo512.png" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/public/manifest.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/public/robots.txt" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/App.css" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/App.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/App.test.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/Heading.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/Post/Detail.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/Post/Edit.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/Post/ImageUpload.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/Post/List.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/Post/PostArea.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/Post/Upload.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/RootBgr.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/User/Login.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/User/Register.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Component/emil-widlund-xrbbXIXAWY0-unsplash.jpg" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Reducer/store.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Reducer/userSlice.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Style/ListCSS.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Style/MainPageCSS.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Style/PostDetailCSS.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Style/RepleCSS.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Style/UploadCSS.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Style/UserCSS.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/Test.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/firebase.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/index.css" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/index.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/logo.svg" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/setupProxy.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/client/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/.package-lock.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/LICENSE" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/bench.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/index.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/abort.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/async.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/defer.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/iterate.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/readable_asynckit.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/readable_parallel.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/readable_serial.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/readable_serial_ordered.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/state.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/streamify.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/lib/terminator.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/parallel.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/serial.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/serialOrdered.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/asynckit/stream.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/LICENSE" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/SECURITY.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/UPGRADE_GUIDE.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/dist/axios.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/dist/axios.map" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/dist/axios.min.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/dist/axios.min.map" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/index.d.ts" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/index.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/adapters/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/adapters/http.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/adapters/xhr.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/axios.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/cancel/CancelToken.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/cancel/CanceledError.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/cancel/isCancel.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/core/Axios.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/core/AxiosError.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/core/InterceptorManager.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/core/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/core/buildFullPath.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/core/dispatchRequest.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/core/mergeConfig.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/core/settle.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/core/transformData.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/defaults/env/FormData.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/defaults/index.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/defaults/transitional.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/env/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/env/data.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/bind.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/buildURL.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/combineURLs.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/cookies.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/deprecatedMethod.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/isAbsoluteURL.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/isAxiosError.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/isURLSameOrigin.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/normalizeHeaderName.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/null.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/parseHeaders.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/parseProtocol.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/spread.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/toFormData.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/helpers/validator.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/lib/utils.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/tsconfig.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/axios/tslint.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/combined-stream/License" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/combined-stream/Readme.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/combined-stream/lib/combined_stream.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/combined-stream/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/combined-stream/yarn.lock" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/delayed-stream/.npmignore" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/delayed-stream/License" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/delayed-stream/Makefile" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/delayed-stream/Readme.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/delayed-stream/lib/delayed_stream.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/delayed-stream/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/follow-redirects/LICENSE" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/follow-redirects/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/follow-redirects/debug.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/follow-redirects/http.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/follow-redirects/https.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/follow-redirects/index.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/follow-redirects/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/form-data/License" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/form-data/README.md.bak" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/form-data/Readme.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/form-data/index.d.ts" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/form-data/lib/browser.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/form-data/lib/form_data.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/form-data/lib/populate.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/form-data/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-db/HISTORY.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-db/LICENSE" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-db/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-db/db.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-db/index.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-db/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-types/HISTORY.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-types/LICENSE" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-types/README.md" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-types/index.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/node_modules/mime-types/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/package-lock.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/package.json" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/Model/Counter.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/Model/Post.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/Model/User.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/Router/post.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/Router/user.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/Util/upload.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/config/key.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/config/production.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/index.js" beforeDir="false" />
+      <change beforePath="$USER_HOME$/Downloads/Post-master/Post-master/server/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/CoreApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/MemberApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/OrderApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/discount/DiscountPolicy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/discount/FixDiscountPolicy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/member/Grade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/member/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/member/MemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/member/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/member/MemberServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/member/MemoryMemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/order/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/order/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/java/hello/core/order/OrderServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/test/java/hello/core/CoreApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/test/java/hello/core/member/MemberServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-study/core/src/test/java/hello/core/order/OrderServiceTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2XsmNX4RJm96XZQe6Ioa7S5RhHc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/client/main" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="client.main" />
+      <recent name="client.mini3" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Game-main\src\main\java\client\main" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.KeyImage">
+    <configuration name="KeyImage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.mini3.KeyImage" />
+      <module name="Game-main.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.mini3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.mini3.Main" />
+      <module name="Game-main.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.mini3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.main.TestClient" />
+      <module name="Game-main.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestClient" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.KeyImage" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b561dfb6-7e89-4019-bf9d-fabd53b3228e" name="Changes" comment="" />
+      <created>1699426133715</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699426133715</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
