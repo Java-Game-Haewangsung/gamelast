@@ -14,7 +14,7 @@ public class BlackHole extends JLabel {
     public BlackHole(int x, int y) {
         this.blackHoleImages = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            Image image = new ImageIcon("D:\\2023-2\\AJ\\mini1\\src\\img\\blackHole" + (i + 1) + ".png").getImage();
+            Image image = new ImageIcon("D:\\2023-2\\AJ\\personal\\Game-main\\src\\img\\blackHole" + (i + 1) + ".png").getImage();
             Image scaledImage = image.getScaledInstance(setW, setH, Image.SCALE_SMOOTH);
             this.blackHoleImages.add(scaledImage);
         } this.currentImageIndex = 0;
@@ -25,24 +25,6 @@ public class BlackHole extends JLabel {
 
         disappear();
     }
-
-//    public void appear() {
-//        currentImageIndex = 5;
-//        new Thread(() -> {
-//            try {
-//                while (currentImageIndex > 0) {
-//                    TimeUnit.MILLISECONDS.sleep(500);
-//                    currentImageIndex--;
-//                    setIcon(new ImageIcon(blackHoleImages.get(currentImageIndex)));
-//                    repaint();
-//                }
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }).start();
-//        setIcon(new ImageIcon(blackHoleImages.get(currentImageIndex)));
-//
-//    }
 
     public void appear() {
         currentImageIndex = 5;
@@ -69,7 +51,7 @@ public class BlackHole extends JLabel {
                 Thread.sleep(6000);
                 currentImageIndex = 0;
                 while (currentImageIndex < 5) {
-                    TimeUnit.MILLISECONDS.sleep(900);
+                    TimeUnit.MILLISECONDS.sleep(500);
                     currentImageIndex++;
                     setIcon(new ImageIcon(blackHoleImages.get(currentImageIndex)));
                     repaint();

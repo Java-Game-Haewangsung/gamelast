@@ -27,11 +27,19 @@ public class Player extends JLabel {
     }
 
     public void setX(int x) {
-        x = this.x;
+        this.x = x;
     }
 
     public void setY(int y) {
-        y = this.y;
+        this.y = y;
+    }
+
+    public void setDx(int dx) {
+        x += dx;
+    }
+
+    public void setDy(int dy) {
+        y += dy;
     }
 
     public int getWidth() {
