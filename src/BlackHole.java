@@ -10,11 +10,12 @@ public class BlackHole extends JLabel {
     private List<Image> blackHoleImages;
     private int currentImageIndex;
     private int setW = 512, setH = 256;
+    private String blackHoleImgPath = "/img/blackHole";
 
     public BlackHole(int x, int y) {
         this.blackHoleImages = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            Image image = new ImageIcon("D:\\2023-2\\AJ\\personal\\Game-main\\src\\img\\blackHole" + (i + 1) + ".png").getImage();
+            Image image = new ImageIcon(getClass().getResource(blackHoleImgPath + (i + 1) + ".png")).getImage();
             Image scaledImage = image.getScaledInstance(setW, setH, Image.SCALE_SMOOTH);
             this.blackHoleImages.add(scaledImage);
         } this.currentImageIndex = 0;

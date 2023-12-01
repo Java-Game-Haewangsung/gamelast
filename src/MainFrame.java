@@ -165,8 +165,8 @@ public class MainFrame extends JFrame {
                 width = getWidth(); // 패널의 너비
                 height = getHeight();
                 Toolkit toolkit = Toolkit.getDefaultToolkit();
-                backImg = toolkit.getImage("D:\\2023-2\\AJ\\mini1\\src\\img\\backImg.jpg");
-                playerImg = toolkit.getImage("D:\\2023-2\\AJ\\mini1\\src\\img\\playerImg.png");
+                backImg = toolkit.getImage("src/img/backImg.jpg");
+                playerImg = toolkit.getImage("src/img/playerImg.png");
 
                 // 배경 이미지 리사이징
                 backImg = backImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
