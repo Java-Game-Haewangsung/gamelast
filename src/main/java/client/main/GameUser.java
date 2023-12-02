@@ -1,8 +1,10 @@
 package client.main;
 
+import client.main.mainmap.Item;
 import client.main.member.Member;
 
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class GameUser {
     private int id;
@@ -10,6 +12,8 @@ public class GameUser {
     private String nickName;
     private Socket sock;
     private GameRoom room;
+
+    private ArrayList<Item> userItems;
 
     public GameUser(Member member) {
         this.member = member;

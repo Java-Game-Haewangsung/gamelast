@@ -1,4 +1,4 @@
-package client.social;
+package client.main.social;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ public class signup extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // 배경 이미지 설정 (가정)
-        JLabel backgroundLabel = new JLabel(new ImageIcon("assets/minigame2/bg0.png"));
+        JLabel backgroundLabel = new JLabel(new ImageIcon("SOURCE/bg0.png"));
         backgroundLabel.setLayout(null);
         setContentPane(backgroundLabel);
 
