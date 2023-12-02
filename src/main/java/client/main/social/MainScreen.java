@@ -4,12 +4,24 @@ import client.main.member.Member;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class MainScreen extends JFrame {
 
     private login login;
     private JPanel main;
+    private JTextField codeInput;
+
+    // 이미지 크기 조절 메서드
+    private Image resizeImage(Image originalImage, int width, int height) {
+        return originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+    }
+
+    Toolkit tk = Toolkit.getDefaultToolkit();
+    Image background_ = tk.getImage("SOURCE/mainbg.png"); // 배경화면;
+    Image background = background_.getScaledInstance(800, 800, Image.SCALE_SMOOTH);
 
     // login 객체의 맴버변수 member(Member의 객체)로부터 로그인한 정보 받아옴
     public MainScreen(login login) {
@@ -21,7 +33,8 @@ public class MainScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // 배경 이미지 설정
-        JLabel backgroundLabel = new JLabel(new ImageIcon("SOURCE/bg0.png"));
+        JLabel backgroundLabel = new JLabel(new ImageIcon(resizeImage(background,800,800)));
+
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         add(backgroundLabel);
 
@@ -34,55 +47,53 @@ public class MainScreen extends JFrame {
 
         backgroundLabel.add(panel);
         Dimension size = panel.getPreferredSize();
-        panel.setBounds((getWidth() - size.width)/ 2, (getHeight() - size.height) / 2, size.width, size.height);
+        panel.setBounds((getWidth() - size.width)/ 2, 350, 400, 150);
 
         setVisible(true);
     }
 
-    private void displayMain(Member member, JPanel panel){
+    private void displayMain(Member member, JPanel panel) {
         // 레이아웃 설정
-        JPanel mainPanel = new JPanel(new GridLayout(5,1));
-        mainPanel.setPreferredSize(new Dimension(400,400));
+        JPanel mainPanel = new JPanel(new GridLayout(3, 1));  // Change the number of rows to 3
+        mainPanel.setPreferredSize(new Dimension(600, 200));
         mainPanel.setBackground(Color.BLACK);
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         panel.add(mainPanel);
 
-        //타이틀
-        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        titlePanel.setBackground(Color.BLACK);
-        JLabel title = new JLabel("Solar System");
-        title.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-        title.setForeground(Color.WHITE);
-        titlePanel.add(title);
-        mainPanel.add(titlePanel);
-
-        //프로필
-        JPanel profilePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        profilePanel.setBackground(Color.BLACK);
-        System.out.println(member.getNickName());
-        String mainString = member.getNickName() + "님,환영합니다!";
-        System.out.println(mainString);
-        JLabel nameLabel = new JLabel();
-        nameLabel.setText(mainString);
-        nameLabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
-        mainPanel.add(profilePanel);
-        profilePanel.add(nameLabel);
-
+        // 중앙에서 100 픽셀 밑에 표시되도록 설정
         JPanel startPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         startPanel.setBackground(Color.BLACK);
+        mainPanel.add(startPanel);
+
         JButton createRbtn = new JButton("방 만들기");
         createRbtn.setBackground(Color.BLUE);
         JButton joinRbtn = new JButton("방 참여하기");
         joinRbtn.setBackground(Color.BLUE);
-        mainPanel.add(startPanel);
+
+        JPanel invitePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        invitePanel.setBackground(Color.BLACK);
+        JLabel inviteLabel = new JLabel("초대코드");
+        inviteLabel.setForeground(Color.WHITE);
+        codeInput = new JTextField(15);
+        mainPanel.add(invitePanel);
         startPanel.add(createRbtn);
         startPanel.add(joinRbtn);
+        invitePanel.add(inviteLabel);
+        invitePanel.add(codeInput);
+
+        String inviteCode = codeInput.getText();
+        joinRbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(inviteCode!=null){
+
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"초대코드를 입력해주세요.");
+                }
+            }
+        });
 
     }
 
-
-
-    public static void main(String[] args) {
-        new MainScreen(new login());
-    }
 }

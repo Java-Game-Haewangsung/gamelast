@@ -6,6 +6,8 @@ public class Item {
     private String itemName;
     private String itemInfo;
 
+    private int itemStock;
+
     public int getItemPrice() {
         return itemPrice;
     }
@@ -18,10 +20,17 @@ public class Item {
         return itemInfo;
     }
 
+    public int getItemStock() {
+        return itemStock;
+    }
+
+
     public Item (int itemPrice,String itemName,String itemInfo) {
         this.itemPrice = itemPrice;
         this.itemName = itemName;
         this.itemInfo = itemInfo;
     }
+
+
 
 }

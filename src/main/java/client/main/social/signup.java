@@ -115,7 +115,8 @@ public class signup extends JFrame {
                     // 회원 정보를 DB에 저장
                     if (saveUserToDB(username, password)) {
                         JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
-                        // 여기에 원하는 작업 추가 (예: 로그인 화면으로 이동)
+                        dispose();
+                        new login();
                     } else {
                         JOptionPane.showMessageDialog(null, "회원가입에 실패했습니다.");
                     }

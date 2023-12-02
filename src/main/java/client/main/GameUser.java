@@ -15,9 +15,12 @@ public class GameUser {
 
     private ArrayList<Item> userItems;
 
+    private int coin;
+
     public GameUser(Member member) {
         this.member = member;
         this.nickName = member.getNickName();
+        this.userItems = new ArrayList<>();
     }
 
     /**
@@ -62,6 +65,26 @@ public class GameUser {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public void addUserItem(Item item){
+        this.userItems.add(item);
+    }
+
+    public void removeUserItem(Item item){
+        this.userItems.remove(item);
+    }
+
+    public ArrayList<Item> getUserItems(){
+        return userItems;
+    }
+
+    public int getCoin() {
+        return coin;
+    }
+
+    public void setCoin(int coin){
+        this.coin = coin;
     }
 
     /*
