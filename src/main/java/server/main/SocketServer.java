@@ -6,16 +6,20 @@ import client.main.RoomManager;
 import client.main.member.Member;
 
 import java.io.*;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TestSocketServer {
+public class SocketServer {
+
+    RoomManager serverRM = new RoomManager();
+
     public static void main(String[] args) throws IOException {
-        TestSocketServer socketServer = new TestSocketServer();
-        socketServer.run();
+        SocketServer socketServer = new SocketServer();
+        socketServer.start();
 
 //        System.out.println(RoomManager.createRoom());
 //        System.out.println(RoomManager.createRoom());
@@ -28,35 +32,38 @@ public class TestSocketServer {
 
     }
 
-    public void run() throws IOException {
+    public void start() throws IOException {
+        ServerSocket server = null;
+        Socket socket = null;
         try {
+            // 서버 소켓 준비
             int port = 18501;
-            ServerSocket server = new ServerSocket(port);
+            server = new ServerSocket();
+            server.bind(new InetSocketAddress("localhost", port));
 
+            // 클라이언트의 연결 요청을 상시 대기.
             while(true) {
-                System.out.println("--- 접속 대기중 ---");
-                Socket socket = server.accept();
+                System.out.println("--- 클라이언트 접속 대기중 ---");
+                socket = server.accept();
                 System.out.println(socket.getInetAddress() + "로부터의 연결 요청이 들어옴");
 
+                // client가 접속할 때마다 새로운 스레드 생성
+                ReceiveThread receiveThread = new ReceiveThread(socket, serverRM);
+                receiveThread.start();
 
-                InputStream is = socket.getInputStream();
-                byte[] bytes = new byte[1024];
-
-
-                int readByteCount = is.read(bytes);
-
-                if (readByteCount > 0) {
-                    System.out.println("클라이언트로부터 데이터 수신");
-                    sendData(bytes, socket);
-
-                    // client가 접속할 때마다 새로운 스레드 생성
-                    ReceiveThread receiveThread = new ReceiveThread(socket);
-                    receiveThread.start();
-                }
-                System.out.println("**** 재전송 완료 ****");
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (server != null) {
+                try {
+                    server.close();
+                    System.out.println("[서버 종료]");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("[서버 소켓통신 에러");
+                }
+            }
         }
     }
 
@@ -75,6 +82,7 @@ public class TestSocketServer {
 // client가 접속할 때마다 새로운 스레드 생성
 class ReceiveThread extends Thread {
 
+    RoomManager serverRM;
     static List<PrintWriter> list = Collections.synchronizedList(new ArrayList<PrintWriter>());
     private final Object lock = new Object();
 
@@ -82,8 +90,9 @@ class ReceiveThread extends Thread {
     BufferedReader in = null;
     PrintWriter out = null;
 
-    public ReceiveThread (Socket socket) {
+    public ReceiveThread (Socket socket, RoomManager rm) {
         this.socket = socket;
+        this.serverRM = rm;
         try {
             out = new PrintWriter(socket.getOutputStream());
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -95,11 +104,12 @@ class ReceiveThread extends Thread {
 
     @Override
     public void run() {
-        // given. 회원가입한 회원
+        // given. 회원가입한 회원. 테스트용
         Member m1 = new Member("julia2039", " aa", "YJ");
         GameUser user1 = new GameUser(m1);
-        GameRoom room = RoomManager.createRoom(user1);
+        GameRoom room = serverRM.createRoom(user1);
         System.out.println("게임 방" + room.getId() + "가 생성되었습니다. 초대 code는 " + room.getRoomCode() + "입니다." );
+        //Main main = new Main();
 
         try {
             System.out.println("try 문 안");
@@ -129,7 +139,7 @@ class ReceiveThread extends Thread {
                 System.out.println(requestMember.getNickName());
                 //String inputMsg = in.readLine();
                 //int code = Integer.parseInt(inputMsg);
-                if (RoomManager.enterRoomByCode(gameUser, room.getId())) {
+                if (serverRM.enterRoomByCode(gameUser, room.getId())) {
                     System.out.println("게임방 접속에 실패하였습니다.");
                 }
                 else {
@@ -144,7 +154,7 @@ class ReceiveThread extends Thread {
                     }
                     gameUser = new GameUser(requestMember);
                     //int code = Integer.parseInt(inputMsg);
-                    if (RoomManager.enterRoomByCode(gameUser, room.getId())) {
+                    if (serverRM.enterRoomByCode(gameUser, room.getId())) {
                         System.out.println("게임방 접속에 실패하였습니다.");
                     }
                     else {

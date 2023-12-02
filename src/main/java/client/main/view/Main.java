@@ -12,7 +12,12 @@ public class Main extends JFrame {
     // 이미지 버퍼
     Image buffImg;
     Graphics buffG;
+    MainMapView mainMapView;
 
+//    public Main(MainMapView mainMapView) {
+//        this.mainMapView = mainMapView;
+//        main();
+//    }
 
 
     public static void main(String[] args) {

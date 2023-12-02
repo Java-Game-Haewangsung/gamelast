@@ -11,6 +11,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+//스레드
 public class MainMapView extends JFrame implements Runnable {
 
     int frameWidth = 800; // JFrame 폭
@@ -167,6 +168,7 @@ public class MainMapView extends JFrame implements Runnable {
         buffG.clearRect(0,0, frameWidth, frameHeight);
         buffG.drawImage(background, 0, 0, this);
     }
+
 
     @Override
     public void run() {

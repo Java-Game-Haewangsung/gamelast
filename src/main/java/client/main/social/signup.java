@@ -1,4 +1,4 @@
-package client.social;
+package client.main.social;
 
 import javax.swing.*;
 import java.awt.*;
@@ -116,6 +116,8 @@ public class signup extends JFrame {
                     if (saveUserToDB(username, password)) {
                         JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.");
                         // 여기에 원하는 작업 추가 (예: 로그인 화면으로 이동)
+                        dispose();
+                        login login = new login();
                     } else {
                         JOptionPane.showMessageDialog(null, "회원가입에 실패했습니다.");
                     }

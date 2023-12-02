@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
@@ -12,7 +13,9 @@ public class TestClient {
     public static void main(String[] args) {
 
         try {
-            Socket socket = new Socket("localhost", 18501);
+            int port = 18501;
+            Socket socket = new Socket();
+            socket.connect(new InetSocketAddress("localhost", port));
 
             // 입력 스트림
             // 서버에서 보낸 데이터를 받음

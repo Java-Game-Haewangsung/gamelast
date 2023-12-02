@@ -1,5 +1,7 @@
 package client.main.social;
 
+import client.main.member.Member;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +11,25 @@ import java.sql.*;
 public class login extends JFrame {
     private JTextField usernameTextField;
     private JPasswordField passwordField;
+    private Member member;
+
+    String username;
+    String password;
+
+    public boolean isLogged;
+
+
+    public String getUserName() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Member getMember() {
+        return member;
+    }
 
     public login() {
         // 프레임 설정
@@ -16,8 +37,8 @@ public class login extends JFrame {
         setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // 배경 이미지 설정 (가정)
-        JLabel backgroundLabel = new JLabel(new ImageIcon("assets/minigame2/bg0.png"));
+        // 배경 이미지 설정
+        JLabel backgroundLabel = new JLabel(new ImageIcon("SOURCE/bg0.png"));
         backgroundLabel.setLayout(null);
         setContentPane(backgroundLabel);
 
@@ -35,6 +56,7 @@ public class login extends JFrame {
 
         // 프레임 표시
         setVisible(true);
+
     }
 
     private void createLoginForm(JPanel panel) {
@@ -58,7 +80,7 @@ public class login extends JFrame {
         JPanel namePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         namePanel.setBackground(Color.BLACK);
         namePanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        JLabel nameLabel = new JLabel("아이디");
+        JLabel nameLabel = new JLabel("닉네임");
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
         usernameTextField = new JTextField(10);
@@ -98,8 +120,8 @@ public class login extends JFrame {
         moveToSignupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose(); // Close the current login window
-                new client.social.signup(); // Open the signup window
+                dispose(); // 로그인 창 닫기
+                new client.social.signup(); //회원가입으로 이동
             }
         });
         formPanel.add(moveToSignupButton);
@@ -108,13 +130,15 @@ public class login extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username = usernameTextField.getText();
-                String password = new String(passwordField.getPassword());
+                username = usernameTextField.getText();
+                password = new String(passwordField.getPassword());
 
                 // 로그인 처리
                 if (isValidLogin(username, password)) {
                     JOptionPane.showMessageDialog(null, "로그인 성공!");
-                    // 여기에 로그인 후의 작업 추가 (예: 메인 화면으로 이동)
+                    saveMember(username,password);
+                    dispose();
+                    new MainScreen(login.this);
                 } else {
                     JOptionPane.showMessageDialog(null, "로그인 실패. 아이디 또는 비밀번호를 확인하세요.");
                 }
@@ -122,7 +146,7 @@ public class login extends JFrame {
         });
     }
 
-    private boolean isValidLogin(String username, String password) {
+    public boolean isValidLogin(String username, String password) {
         // 데이터베이스 연결 정보
         String url = "jdbc:mysql://34.64.188.49:3306/solarSystem?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         String user = "java";
@@ -158,13 +182,51 @@ public class login extends JFrame {
         }
     }
 
+    public void saveMember(String username,String password) {
+        // 데이터베이스 연결 정보
+        String url = "jdbc:mysql://34.64.188.49:3306/solarSystem?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+        String user = "java";
+        String dbPassword = "solarsystem";
+
+        try {
+            // JDBC 드라이버 로드
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // 데이터베이스 연결
+            Connection connection = DriverManager.getConnection(url, user, dbPassword);
+
+            // SQL 쿼리 작성
+            String sql = "SELECT userId, userName, winNum, loseNum FROM user WHERE userName = ? AND userPasswd = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+
+            // 쿼리 실행
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            while (resultSet.next()) {
+                int userId = resultSet.getInt("userId");
+                username = resultSet.getString("userName");
+                int winNum = resultSet.getInt("winNum");
+                int loseNum = resultSet.getInt("loseNum");
+                member = new Member(userId,username,winNum,loseNum);
+            }
+
+            preparedStatement.close();
+            connection.close();
+        }
+        catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
     public static void main(String[] args) {
         // 이 부분에서 Swing 컴포넌트를 생성하는 코드를 작성
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new login();
-            }
-        });
+        new login();
     }
 }

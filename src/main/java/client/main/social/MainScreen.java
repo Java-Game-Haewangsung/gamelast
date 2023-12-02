@@ -1,73 +1,100 @@
 package client.main.social;
 
+import client.main.member.Member;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class readyMain extends JFrame {
 
-    // 전역변수 필드
+public class MainScreen extends JFrame {
 
-    public readyMain() {
+    private login login;
+    private JPanel main;
+    private JTextField codeInput;
 
-            L
-            // 프레임 설정
-            setTitle("로그인 화면");
-            setSize(800, 800);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-            // 배경 이미지 설정 (가정)
-            JLabel backgroundLabel = new JLabel(new ImageIcon("assets/minigame2/bg0.png"));
-            backgroundLabel.setLayout(null);
-            setContentPane(backgroundLabel);
-            JPanel panel = new JPanel();
-            backgroundLabel.add(panel);
-            Dimension size = panel.getPreferredSize();
-            panel.setBounds((getWidth() - size.width) / 2, (getHeight() - size.height) / 2, size.width, size.height);
+    // 이미지 크기 조절 메서드
+    private Image resizeImage(Image originalImage, int width, int height) {
+        return originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
     }
 
+    Toolkit tk = Toolkit.getDefaultToolkit();
+    Image background_ = tk.getImage("SOURCE/mainbg.png"); // 배경화면;
+    Image background = background_.getScaledInstance(800, 800, Image.SCALE_SMOOTH);
 
-    // 방 생성 및 참여 버튼, 프로필 등 표시
-    public void displayMain() {
+    // login 객체의 맴버변수 member(Member의 객체)로부터 로그인한 정보 받아옴
+    public MainScreen(login login) {
 
-        JPanel main = new JPanel(new GridLayout(4,1));
-        main.setPreferredSize(new Dimension(400, 400));
-        main.setBackground(Color.BLACK);
-        main.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        JPanel titlePanel = new JPanel();
-        JLabel title = new JLabel("Solar System");
-        titlePanel.add(title);
+        // 프레임 설정
+        this.login = login;
+        setTitle("메인화면");
+        setSize(800, 800);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel profilePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JLabel imgLabel = new JLabel(new ImageIcon("assets/minigame2/player.png"));
+        // 배경 이미지 설정
+        JLabel backgroundLabel = new JLabel(new ImageIcon(resizeImage(background,800,800)));
 
+        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
+        add(backgroundLabel);
 
+        // 패널과 레이아웃 설정
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        // 로그인한 사용자 정보 받아오기
+        displayMain(login.getMember(),panel);
+
+        backgroundLabel.add(panel);
+        Dimension size = panel.getPreferredSize();
+        panel.setBounds((getWidth() - size.width)/ 2, 350, 400, 150);
+
+        setVisible(true);
     }
 
+    private void displayMain(Member member, JPanel panel) {
+        // 레이아웃 설정
+        JPanel mainPanel = new JPanel(new GridLayout(3, 1));  // Change the number of rows to 3
+        mainPanel.setPreferredSize(new Dimension(600, 200));
+        mainPanel.setBackground(Color.BLACK);
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        panel.add(mainPanel);
 
-    // db로부터 프로필 받아오기
+        // 중앙에서 100 픽셀 밑에 표시되도록 설정
+        JPanel startPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        startPanel.setBackground(Color.BLACK);
+        mainPanel.add(startPanel);
 
-    // 방 생성 1명당 1개의 방을 생성할 수 있음
-    /*
-    1. 방장으로 된 방이 있는지 확인
-     */
-    public void createRoom() {
+        JButton createRbtn = new JButton("방 만들기");
+        createRbtn.setBackground(Color.BLUE);
+        JButton joinRbtn = new JButton("방 참여하기");
+        joinRbtn.setBackground(Color.BLUE);
+
+        JPanel invitePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        invitePanel.setBackground(Color.BLACK);
+        JLabel inviteLabel = new JLabel("초대코드");
+        inviteLabel.setForeground(Color.WHITE);
+        codeInput = new JTextField(15);
+        mainPanel.add(invitePanel);
+        startPanel.add(createRbtn);
+        startPanel.add(joinRbtn);
+        invitePanel.add(inviteLabel);
+        invitePanel.add(codeInput);
+
+        String inviteCode = codeInput.getText();
+        joinRbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(inviteCode!=null){
+                    int code = Integer.parseInt(inviteCode);
+
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"초대코드를 입력해주세요.");
+                }
+            }
+        });
 
     }
-
-    // 방 참여
-    public void joinRoom() {
-
-    }
-
-
-    // playerRoom table
-    // roomId, 방장 userId, 초대코드(랜덤생성), 방 이름, 상태(playing/readyfull/readyleft), 생성일자 -> 게임 끝나거나 펑 하면 사라짐
-    // joinRoom table
-    // roomID, userId
-
-    public static void main(String[] args) {
-
-    }
-
 
 }
