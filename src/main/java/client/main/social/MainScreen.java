@@ -1,6 +1,7 @@
 package client.main.social;
 
 import client.main.member.Member;
+import client.main.socket.ClientThread;
 
 import javax.swing.*;
 import java.awt.*;
@@ -80,16 +81,34 @@ public class MainScreen extends JFrame {
         startPanel.add(joinRbtn);
         invitePanel.add(inviteLabel);
         invitePanel.add(codeInput);
-
         String inviteCode = codeInput.getText();
+
+        // 로그인한 사용자가 게임방 생성
+        createRbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClientThread th = new ClientThread(member, "CREATE_ROOM");
+                th.start();
+            }
+        });
+
+        // 로그인한 사용자가 초대 코드 입력해 게임방 접속
         joinRbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(inviteCode!=null){
-                    int code = Integer.parseInt(inviteCode);
+                // 버튼 클릭 시점에 inviteCode 가져오기
+                String inviteCode = codeInput.getText().trim();
 
-                }
-                else{
+                if(!inviteCode.isEmpty()){
+                    try {
+                        int code = Integer.parseInt(inviteCode);
+                        member.setJoinCode(code);
+                        ClientThread th = new ClientThread(member, "JOIN_ROOM");
+                        th.start();
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(null, "숫자로 변환할 수 없는 초대코드입니다.");
+                    }
+                } else {
                     JOptionPane.showMessageDialog(null,"초대코드를 입력해주세요.");
                 }
             }

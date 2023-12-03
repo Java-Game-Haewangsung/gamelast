@@ -20,7 +20,7 @@ public class GameUser {
     int height;
     private int coin;
     private int sun;
-    private
+
 
     public GameUser(Member member) {
         this.member = member;

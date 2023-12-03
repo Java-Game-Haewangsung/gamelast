@@ -9,6 +9,7 @@ public class Member implements Serializable {
     private String nickName;
     private int winNum;
     private int loseNum;
+    private int joinCode;
 
     public Member(String id, String password, String nickName) {
         this.id = id;
@@ -42,5 +43,13 @@ public class Member implements Serializable {
 
     public int getLoseNum() {
         return loseNum;
+    }
+
+    public int getJoinCode() {
+        return joinCode;
+    }
+
+    public void setJoinCode(int joinCode) {
+        this.joinCode = joinCode;
     }
 }

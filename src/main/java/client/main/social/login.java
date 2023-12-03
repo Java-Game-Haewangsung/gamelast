@@ -121,7 +121,7 @@ public class login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose(); // 로그인 창 닫기
-                new client.social.signup(); //회원가입으로 이동
+                new client.main.social.signup(); //회원가입으로 이동
             }
         });
         formPanel.add(moveToSignupButton);

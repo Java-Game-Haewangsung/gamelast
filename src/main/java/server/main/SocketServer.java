@@ -9,6 +9,8 @@ import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,15 +22,6 @@ public class SocketServer {
     public static void main(String[] args) throws IOException {
         SocketServer socketServer = new SocketServer();
         socketServer.start();
-
-//        System.out.println(RoomManager.createRoom());
-//        System.out.println(RoomManager.createRoom());
-//
-//        Thread thread1 = new Thread(() -> System.out.println(RoomManager.createRoom()));
-//        Thread thread2 = new Thread(() -> System.out.println(RoomManager.createRoom()));
-//
-//        thread1.start();
-//        thread2.start();
 
     }
 
@@ -87,16 +80,19 @@ class ReceiveThread extends Thread {
     private final Object lock = new Object();
 
     Socket socket = null;
-    BufferedReader in = null;
-    PrintWriter out = null;
+//    BufferedReader in = null;
+//    PrintWriter out = null;
+    InputStream in;
+    OutputStream out;
+    String reqName;
 
     public ReceiveThread (Socket socket, RoomManager rm) {
         this.socket = socket;
         this.serverRM = rm;
         try {
-            out = new PrintWriter(socket.getOutputStream());
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            list.add(out);
+            out = socket.getOutputStream();
+            in = socket.getInputStream();
+            //list.add(out);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -105,10 +101,6 @@ class ReceiveThread extends Thread {
     @Override
     public void run() {
         // given. 회원가입한 회원. 테스트용
-        Member m1 = new Member("julia2039", " aa", "YJ");
-        GameUser user1 = new GameUser(m1);
-        GameRoom room = serverRM.createRoom(user1);
-        System.out.println("게임 방" + room.getId() + "가 생성되었습니다. 초대 code는 " + room.getRoomCode() + "입니다." );
         //Main main = new Main();
 
         try {
@@ -126,41 +118,82 @@ class ReceiveThread extends Thread {
                 //BufferedReader initialReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
                 System.out.println("아");
-                byte[] recvBuffer = new byte[100000];
-                InputStream is = socket.getInputStream();
-                int readSize = is.read(recvBuffer);
-                Member requestMember = toObject(recvBuffer, Member.class);
+                byte[] lengthBuffer = new byte[4];
+                while (in.read(lengthBuffer) != -1) {
+                    // 각 배열의 길이 읽기
+                    int length = ByteBuffer.wrap(lengthBuffer).getInt();
+                    // 길이에 맞게 byte 배열 읽기
+                    byte[] data = new byte[length];
+                    int readSize = in.read(data);
+
+                    //받아온 값이 0보다 클때
+                    if (readSize > 0 && readSize < 15) {
+                        reqName = new String(data, StandardCharsets.UTF_8);
+                    }
+
+                    else if (readSize > 15) {
+                        switch (reqName) {
+                            case "CREATE_ROOM" : {
+                                //받아온 byte를 Object로 변환
+                                Member requestMember = toObject(data, Member.class);
+                                // 확인을 위해 출력
+                                System.out.println(requestMember.getNickName());
+                                GameUser gameUser = new GameUser(requestMember);
+
+                                GameRoom createdRoom = serverRM.createRoom(gameUser);
+                                System.out.println("방장이 방을 생성 완료 방 코드는 " + createdRoom.getRoomCode());
+
+                            }
+                            case "JOIN_ROOM" : {
+                                //받아온 byte를 Object로 변환
+                                Member requestMember = toObject(data, Member.class);
+                                // 확인을 위해 출력
+                                System.out.println(requestMember.getNickName());
+                                GameUser gameUser = new GameUser(requestMember);
+
+                                System.out.println("아");
+                                System.out.println(requestMember.getNickName());
+
+                                if (serverRM.enterRoomByCode(gameUser, requestMember.getJoinCode())) {
+                                    System.out.println("게임방 접속에 실패하였습니다.");
+                                }
+                                else {
+                                    System.out.println("게임방에 접속하였습니다.");
+                                }
+                            }
+                        }
+
+                    }
+                    else {
+                        System.out.println("스트림읽기 오류");
+                    }
+                }
+
+
+//                byte[] recvBuffer = new byte[100000];
+//                InputStream is = socket.getInputStream();
+//                int readSize = is.read(recvBuffer);
+//                Member requestMember = toObject(recvBuffer, Member.class);
 
 
                 //======
-                GameUser gameUser = new GameUser(requestMember);
 
-                System.out.println("아");
-                System.out.println(requestMember.getNickName());
-                //String inputMsg = in.readLine();
-                //int code = Integer.parseInt(inputMsg);
-                if (serverRM.enterRoomByCode(gameUser, room.getId())) {
-                    System.out.println("게임방 접속에 실패하였습니다.");
-                }
-                else {
-                    System.out.println("게임방에 접속하였습니다.");
-                }
 
-                while (true) {
-                    requestMember = receive(socket);
-                    if (requestMember == null) {
-                        // 클라이언트가 연결을 끊었을 때
-                        break;
-                    }
-                    gameUser = new GameUser(requestMember);
-                    //int code = Integer.parseInt(inputMsg);
-                    if (serverRM.enterRoomByCode(gameUser, room.getId())) {
-                        System.out.println("게임방 접속에 실패하였습니다.");
-                    }
-                    else {
-                        System.out.println("게임방에 접속하였습니다.");
-                    }
-                }
+//                while (true) {
+//                    requestMember = receive(socket);
+//                    if (requestMember == null) {
+//                        // 클라이언트가 연결을 끊었을 때
+//                        break;
+//                    }
+//                    gameUser = new GameUser(requestMember);
+//                    //int code = Integer.parseInt(inputMsg);
+//                    if (serverRM.enterRoomByCode(gameUser, room.getId())) {
+//                        System.out.println("게임방 접속에 실패하였습니다.");
+//                    }
+//                    else {
+//                        System.out.println("게임방에 접속하였습니다.");
+//                    }
+//                }
 
                 lock.notify();
             }
@@ -169,7 +202,7 @@ class ReceiveThread extends Thread {
 //            System.out.println("게임 방 접속 실패");
             e.printStackTrace();
         } finally {
-            broadcast(room.getRoomCode(), "접속 성공");
+            //broadcast(room.getRoomCode(), "접속 성공");
         }
         System.out.println("끝");
 
@@ -224,4 +257,6 @@ class ReceiveThread extends Thread {
         }
         return type.cast(obj);
     }
+
+
 }
