@@ -3,10 +3,13 @@ package client.main.view;
 import client.main.GameUser;
 import client.main.RoomManager;
 import client.main.member.Member;
+import client.main.minigame.mini1.MainFrame;
+import client.main.minigame.mini2.miniGame2;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Main extends JFrame {
     // 이미지 버퍼
@@ -35,10 +38,20 @@ public class Main extends JFrame {
         GameUser g2 = new GameUser(m2);
         GameUser g3 = new GameUser(m3);
         GameUser g4 = new GameUser(m4);
+
+
         ArrayList<GameUser> users = new ArrayList<>();
         users.add(g1); users.add(g2); users.add(g3); users.add(g4);
-        MainMapView mainMapView = new MainMapView(users, RoomManager.createRoom());
+        MainMapView mainMapView = new MainMapView(g1,users, RoomManager.createRoom());
         new Thread(mainMapView).start();
+        Random miniRan = new Random(2);
+        int ranNum = miniRan.nextInt();
+        if (ranNum == 0) {
+            new MainFrame(g1);
+        }
+        else if (ranNum == 1) {
+            new miniGame2(g1);
+        }
 
     }
 }
