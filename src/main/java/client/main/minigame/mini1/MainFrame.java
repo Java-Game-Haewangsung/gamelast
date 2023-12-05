@@ -1,12 +1,16 @@
+package client.main.minigame.mini1;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.Timer;
 
 public class MainFrame extends JFrame {
     GamePanel panel;
@@ -30,8 +34,8 @@ public class MainFrame extends JFrame {
         Random random = new Random();
         Image backImg; // 배경 이미지
         Image playerImg; // 플레이어 이미지
-        String backImgPath = "/img/backImg.jpg";
-        String playerImgPath = "/img/playerImg.png";
+        String backImgPath = "SOURCE/Mini1/backImg.jpg";
+        String playerImgPath = "SOURCE/Mini1/playerImg.png";
 
         // 패널 크기
         int width;

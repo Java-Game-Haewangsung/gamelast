@@ -1,4 +1,4 @@
-package client.mini3;
+package client.main.minigame.mini3;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

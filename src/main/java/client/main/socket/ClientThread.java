@@ -2,7 +2,7 @@ package client.main.socket;
 
 import client.main.member.Member;
 import client.main.social.MainScreen;
-import client.main.view.Main;
+import client.main.view.MainThread;
 
 import java.io.*;
 import java.net.Socket;
@@ -17,7 +17,7 @@ public class ClientThread extends Thread{
     private OutputStream out;
     private StringBuffer buffer;
     private Thread thisThread;
-    private Main mainMapStart;
+    private MainThread mainThreadMapStart;
     private MainScreen joinClient;
     private Member joinMember;
     private String reqName;

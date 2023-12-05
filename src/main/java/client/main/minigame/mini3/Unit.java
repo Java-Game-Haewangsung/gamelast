@@ -1,4 +1,4 @@
-package client.mini3;
+package client.main.minigame.mini3;
 
 import client.main.GameUser;
 
