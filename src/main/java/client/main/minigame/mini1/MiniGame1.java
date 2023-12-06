@@ -1,7 +1,15 @@
 package client.main.minigame.mini1;
 
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/main/java/client/main/minigame/mini1/MiniGame1.java
 import client.main.GameUser;
 
+========
+>>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539:src/main/java/client/main/minigame/mini1/MainFrame.java
+=======
+import client.main.GameUser;
+
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +17,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/main/java/client/main/minigame/mini1/MiniGame1.java
 import java.io.File;
+========
+>>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539:src/main/java/client/main/minigame/mini1/MainFrame.java
+=======
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,6 +55,13 @@ public class MiniGame1 extends JFrame implements Runnable {
         Image backImg; // 배경 이미지
         Image playerImg; // 플레이어 이미지
         String backImgPath = "SOURCE/Mini1/backImg.jpg";
+<<<<<<< HEAD
+<<<<<<<< HEAD:src/main/java/client/main/minigame/mini1/MiniGame1.java
+========
+        String playerImgPath = "SOURCE/Mini1/playerImg.png";
+>>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539:src/main/java/client/main/minigame/mini1/MainFrame.java
+=======
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
 
         // 패널 크기
         int width;
@@ -171,10 +192,16 @@ public class MiniGame1 extends JFrame implements Runnable {
             if (width == 0 || height == 0) {
                 width = getWidth(); // 패널의 너비
                 height = getHeight();
+<<<<<<< HEAD
 
                 // ImageIO로 이미지 가져옴
                 try {
                     backImg = ImageIO.read(new File(backImgPath));
+=======
+                // ImageIO를 사용한 부분
+                try {
+                    backImg = ImageIO.read(getClass().getResourceAsStream(backImgPath));
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -183,6 +210,10 @@ public class MiniGame1 extends JFrame implements Runnable {
                 backImg = backImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 
                 // 플레이어 이미지 크기 조정
+<<<<<<< HEAD
+=======
+                player.setImage(playerImg.getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
                 player.setX(width / 2 - player.getWidth() / 2);
                 player.setY(height - 100 - player.getHeight());
                 playerImg = playerImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
@@ -285,8 +316,12 @@ public class MiniGame1 extends JFrame implements Runnable {
     }
 
 //    public static void main(String[] args) {
+<<<<<<< HEAD
 //        Member member = new Member(1,"j",0,0);
 //        GameUser user = new GameUser(member);
 //        new MiniGame1(user);
+=======
+//        new MiniGame1();
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
 //    }
 }

@@ -4,7 +4,10 @@ import client.main.GameRoom;
 import client.main.GameUser;
 import client.main.minigame.mini1.MiniGame1;
 import client.main.minigame.mini2.MiniGame2;
+<<<<<<< HEAD
 import client.main.minigame.mini3.Mini3Main;
+=======
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
 import client.main.object.Dice;
 import client.main.object.PlanetNode;
 import client.main.object.Store;
@@ -24,7 +27,12 @@ import java.util.Random;
 public class MainMapView extends JPanel implements Runnable {
 
     private int currentIndex; // 노드 이동 갱신용
+<<<<<<< HEAD
     private int checkTurn = 1; // 4의 배수일 때마다 미니게임 실행, 32(8턴)일 때 전체 게임 끝남
+=======
+    private int checkTurn = 1;
+    private boolean isMiniGameExecuted = false;
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
     private boolean miniAvailable = false;
 
     int frameWidth = 800; // Panel 폭
@@ -250,9 +258,12 @@ public class MainMapView extends JPanel implements Runnable {
         // 랜덤 위치 노드에 태양 생성
         createSun();
 
+<<<<<<< HEAD
         // 테스트용 미니게임 바로 시작
         miniAvailable = true;
 
+=======
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
         /**
          * 주사위 굴리기
          */
@@ -300,10 +311,13 @@ public class MainMapView extends JPanel implements Runnable {
 //        users.get(2).addCoin(6);
 //        users.get(2).setCurrentPosition(125, 605);
 
+<<<<<<< HEAD
         // 게임이 종료됐을 때(8턴 다 돌았을 때)
         if (checkTurn == 32) {
             showGameResult(turnPlayer);
         }
+=======
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
     }
 
     // 이미지 크기 조절 메서드
@@ -375,6 +389,24 @@ public class MainMapView extends JPanel implements Runnable {
         g.fillRect(x, y, width, height);
         g.setColor(Color.WHITE);
         g.drawRect(x, y, width, height);
+<<<<<<< HEAD
+=======
+
+        // 유저 정보 표시
+        String nickname = user.getNickName();
+        int coin = user.getCoin();
+        int sun = user.getSun();
+        Font f = new Font(Font.SANS_SERIF, Font.BOLD, 15);
+        g.setFont(f);
+        g.drawString(nickname, x + 10, y + 30);
+        g.drawString("코인: " + coin, x + 10, y + 60);
+        g.drawString("태양: " + sun, x + 10, y + 90);
+    }
+
+    public int getCheckTurn() {
+        return checkTurn;
+    }
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
 
         // 유저 정보 표시
         String nickname = user.getNickName();
@@ -415,8 +447,12 @@ public class MainMapView extends JPanel implements Runnable {
                 if (miniAvailable) {
                     // 미니게임 랜덤 실행
                     Random miniRan = new Random(System.currentTimeMillis());
+<<<<<<< HEAD
 //                    int ranNum = miniRan.nextInt(2);
                     int ranNum = 0;
+=======
+                    int ranNum = miniRan.nextInt(2);
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
                     Thread miniGameThread = null;
 
                     if (ranNum == 0) {
@@ -424,10 +460,17 @@ public class MainMapView extends JPanel implements Runnable {
                     } else if (ranNum == 1) {
                         miniGameThread = new Thread(new MiniGame2(users.get(0))); // 미니게임2 실행
                     } else if (ranNum == 2) {
+<<<<<<< HEAD
                         miniGameThread = new Thread((Runnable) new Mini3Main(users.get(0))); // 미니게임3 실행
                     }
 
                     // 미니게임 스레드의 종료를 기다림
+=======
+//            miniGameThread = new Thread((Runnable) new Mini3Main(users.get(0))); // 미니게임3 실행
+                    }
+
+                    // 메인 스레드는 미니게임 스레드의 종료를 기다림
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
                     try {
                         miniAvailable = false;
                         miniGameThread.join();

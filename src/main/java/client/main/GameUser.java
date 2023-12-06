@@ -89,8 +89,13 @@ public class GameUser {
 
     // 노드 이동: 타겟 노드로 직접(한번에) 이동
     public void moveToNode(PlanetNode targetNode) {
+<<<<<<< HEAD
         setCurrentNode(targetNode);
         setCurrentPosition(targetNode.getPosX(), targetNode.getPosY());
+=======
+        setCurrentPosition(targetNode.getPosX(), targetNode.getPosY());
+        setCurrentNode(targetNode);
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
     }
 
     public int getId() {

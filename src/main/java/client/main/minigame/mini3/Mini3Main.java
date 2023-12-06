@@ -68,6 +68,7 @@ class TestMiniView extends JFrame {
     }
 }
 public class Mini3Main {
+<<<<<<< HEAD
     public Mini3Main(GameUser user) {
         Player player = new Player(user);
         //TestMiniView testMiniView = new TestMiniView();
@@ -88,6 +89,28 @@ public class Mini3Main {
 
 
     }
+=======
+        public Mini3Main(GameUser user) {
+            Player player = new Player(user);
+            //TestMiniView testMiniView = new TestMiniView();
+            GameView gameObject = new GameView(player, user);
+            LocalDateTime beforeTime = LocalDateTime.now();
+            LocalDateTime afterTime = LocalDateTime.now();
+            Thread gameThread = new Thread(gameObject);
+
+            gameThread.start();
+
+            // 스레드가 종료될 때까지 대기
+
+            try {
+                gameThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
 
 
     public static void main(String[] args) {

@@ -15,6 +15,7 @@ public class GameRoom implements Serializable {
     private LocalDateTime startTime; //생성된 시간
 //    private MainMap mainMap = new MainMap();
 
+
     /**
      * 게임룸 생성 및 게임유저 입장 로직
      */

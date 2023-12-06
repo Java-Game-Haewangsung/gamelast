@@ -5,7 +5,10 @@ import client.main.GameRoom;
 import client.main.GameUser;
 import client.main.member.Member;
 import client.main.social.MainScreen;
+<<<<<<< HEAD
 import client.main.view.MainMapView;
+=======
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
 import client.main.view.MainThread;
 
 import java.io.*;
@@ -21,6 +24,10 @@ public class ClientThread extends Thread {
     private OutputStream out;
     private StringBuffer buffer;
     private Thread thisThread;
+<<<<<<< HEAD
+=======
+    private MainThread mainThreadMapStart;
+>>>>>>> 852e1f8a2334240e78f52837c6795ad0884b8539
     private MainScreen joinClient;
     private Member joinMember;
     private String reqName;
