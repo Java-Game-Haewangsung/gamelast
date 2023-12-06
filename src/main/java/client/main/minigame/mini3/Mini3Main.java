@@ -1,11 +1,13 @@
-package client.mini3;
+package client.main.minigame.mini3;
 
 import client.main.GameUser;
+import client.main.member.Member;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.time.LocalDateTime;
 
 class TestMiniView extends JFrame {
     Toolkit imageTool = Toolkit.getDefaultToolkit();
@@ -66,11 +68,33 @@ class TestMiniView extends JFrame {
     }
 }
 public class Mini3Main {
-    public static void main(String[] args) {
-        GameUser user = new GameUser("LEE");
+    public Mini3Main(GameUser user) {
         Player player = new Player(user);
-        TestMiniView testMiniView= new TestMiniView();
+        //TestMiniView testMiniView = new TestMiniView();
         GameView gameObject = new GameView(player, user);
-        new Thread(gameObject).start();
+        LocalDateTime beforeTime = LocalDateTime.now();
+        LocalDateTime afterTime = LocalDateTime.now();
+        Thread gameThread = new Thread(gameObject);
+
+        gameThread.start();
+
+        // 스레드가 종료될 때까지 대기
+
+        try {
+            gameThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    public static void main(String[] args) {
+
+        Member member = new Member(1,"j",0,0);
+        GameUser user = new GameUser(member);
+        new Mini3Main(user);
     }
 }
+

@@ -222,11 +222,4 @@ public class login extends JFrame {
 
     }
 
-
-
-
-    public static void main(String[] args) {
-        // 이 부분에서 Swing 컴포넌트를 생성하는 코드를 작성
-        new login();
-    }
 }

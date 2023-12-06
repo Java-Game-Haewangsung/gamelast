@@ -1,22 +1,18 @@
 package client.main;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class RoomManager {
+public class RoomManager implements Serializable {
     private int id;
     private static HashMap<Integer, GameRoom> roomInfo = new HashMap<>();
     private static ArrayList<GameRoom> gameRooms = new ArrayList<>();
     private static ArrayList<Integer> roomCodes = new ArrayList<>();
     private static AtomicInteger automicInteger = new AtomicInteger();
 
-//    static {
-//        room
-//    }
-
     public RoomManager() {
-
     }
 
     /**
@@ -40,9 +36,8 @@ public class RoomManager {
      */
     public static GameRoom createRoom(GameUser owner) {
         int roomId = automicInteger.incrementAndGet();
-        int roomCode = (int)(Math.random() * 89999) + 10000;
 
-        GameRoom room = new GameRoom(roomId, owner, roomCode);
+        GameRoom room = new GameRoom(roomId, owner);
         gameRooms.add(room);
         roomCodes.add(room.getRoomCode());
         roomInfo.put(room.getRoomCode(), room);
@@ -87,8 +82,6 @@ public class RoomManager {
      * @param user, roomCode
      */
     public static boolean enterRoomByCode(GameUser user, int roomCode) {
-//        int idx = roomCodes.indexOf(roomCode);
-//        user.enterRoom(gameRooms.get(idx));
         if (roomInfo.containsKey(roomCode)) {
             GameRoom r = roomInfo.get(roomCode);
 
@@ -97,10 +90,21 @@ public class RoomManager {
                 return true;
             }
             else {
+                System.out.println(r.getJoinNum() + "인원 다 찼음");
                 return false; // 방에 인원이 다 찼으면 입장 불가
             }
         }
+        System.out.println("해당 코드인 게임방이 존재하지 않음");
         return false; // 해당 코드인 게임방이 존재하지 않으면 false 반환
+    }
+
+    public static GameRoom getRoomByCode(int roomCode) {
+        if (roomInfo.containsKey(roomCode)) {
+            GameRoom r = roomInfo.get(roomCode);
+
+            return r;
+        }
+        return null;
     }
 
     /**
@@ -122,7 +126,27 @@ public class RoomManager {
     }
 
 
+    public static HashMap<Integer, GameRoom> getRoomInfo() {
+        return roomInfo;
+    }
 
+    public static void setRoomInfo(HashMap<Integer, GameRoom> roomInfo) {
+        RoomManager.roomInfo = roomInfo;
+    }
 
+    public static ArrayList<GameRoom> getGameRooms() {
+        return gameRooms;
+    }
 
+    public static void setGameRooms(ArrayList<GameRoom> gameRooms) {
+        RoomManager.gameRooms = gameRooms;
+    }
+
+    public static ArrayList<Integer> getRoomCodes() {
+        return roomCodes;
+    }
+
+    public static void setRoomCodes(ArrayList<Integer> roomCodes) {
+        RoomManager.roomCodes = roomCodes;
+    }
 }

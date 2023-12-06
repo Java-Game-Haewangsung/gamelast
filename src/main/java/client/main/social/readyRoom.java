@@ -1,7 +1,7 @@
 package client.main.social;
 
-import client.main.GameRoom;
-import client.main.view.Main;
+import client.main.GameUser;
+import client.main.socket.ClientThread;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class readyRoom extends JFrame {
-    boolean flag = false;
-    public readyRoom(GameRoom room) {
+    public readyRoom(ClientThread clientThread, GameUser gameUser) {
         // 프레임 설정
-        setTitle("로그인 화면");
+        setTitle("대기실 화면");
         setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -23,7 +22,7 @@ public class readyRoom extends JFrame {
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panel.setBounds(200,550,400,100);
-        JLabel inviteCodeLabel = new JLabel("초대코드 : ");
+        JLabel inviteCodeLabel = new JLabel("초대코드 : "  +  gameUser.getEnteredCode());
         panel.setBackground(Color.BLACK);
         inviteCodeLabel.setForeground(Color.WHITE);
         inviteCodeLabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
@@ -35,23 +34,11 @@ public class readyRoom extends JFrame {
         startBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 3명일때
-                flag = true;
+
             }
         });
 
         setVisible(true);
     }
-
-    public void startGame() {
-        if(flag==true){
-            new Main();
-        }
-    }
-
-    public static void main(String[] args) {
-
-    }
-
 
 }

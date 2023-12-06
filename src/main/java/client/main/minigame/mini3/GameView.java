@@ -1,4 +1,4 @@
-package client.mini3;
+package client.main.minigame.mini3;
 
 import client.main.GameUser;
 
@@ -43,15 +43,27 @@ public class GameView extends JFrame implements Runnable{
     Image background = background_.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
     Image background2 = background_.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
 
-
     ArrayList<Missile> Missiles = new ArrayList<Missile>();
     ArrayList<Meteors> Meteors = new ArrayList<Meteors>();
     ArrayList<Bomb> Bombs = new ArrayList<Bomb>();
+
+    Timer timer;
+    long startTime;
+    private int count;
 
     public GameView(Player p, GameUser u) {
         this.player = p;
         this.user = u;
         this.checkExit = false;
+        // 게임 시작 시간 기록
+        startTime = System.currentTimeMillis();
+        count = 0;
+        // 타이머 초기화
+        timer = new Timer(1000 , e -> {
+            count++;
+        });
+        timer.start();
+
 
         //플레이어 키 입력 스레드
         KeyControl key = new KeyControl(player, this);
@@ -94,6 +106,8 @@ public class GameView extends JFrame implements Runnable{
             return;
         }
     }
+
+
 
 
     public void update(Graphics g) {
@@ -158,6 +172,16 @@ public class GameView extends JFrame implements Runnable{
 
             // Frame 없애기.
             this.checkExit = true;
+            // 걸린 시간이 5초 이상이면 코인 4개 지급
+            if(this.checkExit==true) {
+                timer.stop();
+                user.setMiniGameScore(count);
+                if(count>5){
+                    user.setCoin(user.getCoin()+4);
+                    System.out.println("5초 이상 버텼습니다.");
+                }
+                System.out.println("코인: " + user.getCoin());
+            }
             this.dispose();
             return;
         }
@@ -198,10 +222,10 @@ public class GameView extends JFrame implements Runnable{
     @Override
     public void run() {
         // 게임 진행시 main 스레드를 join으로 묶어둔다.
-        while(true) {
-            if(this.checkExit == true)
+        while (true) {
+            if (this.checkExit) {
                 break;
-            else {
+            } else {
                 System.out.println("");
                 for (Meteors meteor : Meteors) {
                     meteor.move();
@@ -212,7 +236,21 @@ public class GameView extends JFrame implements Runnable{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                //continue;
+
+                // 게임 종료 조건
+                if (this.player.hp <= 0) {
+                    // 게임 종료 시 필요한 정리 작업을 수행
+                    this.checkExit = true;
+
+                    // 리스트 초기화
+                    Missiles = new ArrayList<>();
+                    Meteors = new ArrayList<>();
+                    Bombs = new ArrayList<>();
+
+                    // 프레임 닫기
+                    this.dispose();
+                    break; // 루프를 빠져나가서 스레드 종료
+                }
             }
         }
     }

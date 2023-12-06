@@ -3,57 +3,54 @@ package client.main.view;
 import client.main.GameUser;
 import client.main.RoomManager;
 import client.main.member.Member;
-import client.main.minigame.mini1.MainFrame;
-import client.main.minigame.mini2.miniGame2;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Main extends JFrame {
-    // 이미지 버퍼
-    Image buffImg;
-    Graphics buffG;
-    MainMapView mainMapView;
+public class MainThread extends JFrame {
+    private boolean isMiniGameExecuted = false;
 
-//    public Main(MainMapView mainMapView) {
-//        this.mainMapView = mainMapView;
-//        main();
-//    }
+    public MainThread() {
+        Member m1, m2, m3; // 유저 객체
+        GameUser g1, g2, g3; // 인게임 플레이어 객체
+        ArrayList<GameUser> users; // 플레이어들 저장 리스트
+        MainMapView mainMapView;
+        Random miniRan; // 미니게임 랜덤실행용
 
+
+        // (테스트용) 멤버, 플레이어 객체 생성
+        m1 = new Member("a", "a", "팽도리");
+        m2 = new Member("b", "a", "이상해씨");
+        m3 = new Member("c", "a", "파이리");
+        g1 = new GameUser(m1);
+        g2 = new GameUser(m2);
+        g3 = new GameUser(m3);
+
+        users = new ArrayList<>();
+        users.add(g1);
+        users.add(g2);
+        users.add(g3);
+        mainMapView = new MainMapView(users, RoomManager.createRoom());
+
+        // 타이틀 설정
+        setTitle("Solar System");
+        // 프레임 크기 및 속성 설정
+        setSize(800, 800);
+        // MainMapView를 프레임에 추가
+        getContentPane().add(mainMapView);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        new Thread(mainMapView).start();
+    }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Your Frame Title");
-        // 창을 닫을 때 프로그램 종료 설정
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // 프레임을 보이도록 설정
-        frame.setVisible(true);
-        //테스트용 객체 생성
-        Member m1 = new Member("a", "a", "a");
-        Member m2 = new Member("b", "a", "b");
-        Member m3 = new Member("c", "a", "c");
-        Member m4 = new Member("d", "a", "d");
-        GameUser g1 = new GameUser(m1);
-        GameUser g2 = new GameUser(m2);
-        GameUser g3 = new GameUser(m3);
-        GameUser g4 = new GameUser(m4);
-
-
-        ArrayList<GameUser> users = new ArrayList<>();
-        users.add(g1); users.add(g2); users.add(g3); users.add(g4);
-        MainMapView mainMapView = new MainMapView(g1,users, RoomManager.createRoom());
-        new Thread(mainMapView).start();
-        Random miniRan = new Random(2);
-        int ranNum = miniRan.nextInt();
-        if (ranNum == 0) {
-            new MainFrame(g1);
-        }
-        else if (ranNum == 1) {
-            new miniGame2(g1);
-        }
-
+        new MainThread();
     }
+
 }
 
 

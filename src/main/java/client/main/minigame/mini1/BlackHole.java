@@ -1,3 +1,5 @@
+package client.main.minigame.mini1;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,7 +20,8 @@ public class BlackHole extends JLabel {
             Image image = new ImageIcon(getClass().getResource(blackHoleImgPath + (i + 1) + ".png")).getImage();
             Image scaledImage = image.getScaledInstance(setW, setH, Image.SCALE_SMOOTH);
             this.blackHoleImages.add(scaledImage);
-        } this.currentImageIndex = 0;
+        }
+        this.currentImageIndex = 0;
 
         appear();
         setBounds(x, y, setW, setH);
@@ -34,6 +37,7 @@ public class BlackHole extends JLabel {
             public void actionPerformed(ActionEvent e) {
                 if (currentImageIndex > 0) {
                     currentImageIndex--;
+                    // 이미지 변경
                     setIcon(new ImageIcon(blackHoleImages.get(currentImageIndex)));
                     repaint();
                 } else {
@@ -46,6 +50,7 @@ public class BlackHole extends JLabel {
     }
 
 
+    // 블랙홀 사라지는 모션
     public void disappear() {
         new Thread(() -> {
             try {
@@ -54,6 +59,7 @@ public class BlackHole extends JLabel {
                 while (currentImageIndex < 5) {
                     TimeUnit.MILLISECONDS.sleep(500);
                     currentImageIndex++;
+                    // 이미지 변경
                     setIcon(new ImageIcon(blackHoleImages.get(currentImageIndex)));
                     repaint();
                 }

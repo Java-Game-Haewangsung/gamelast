@@ -1,7 +1,10 @@
 // Player.java
+package client.main.minigame.mini1;
+
+import client.main.GameUser;
 
 import javax.swing.*;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Player extends JLabel {
@@ -9,13 +12,16 @@ public class Player extends JLabel {
     private Image playerImg;
     private int width = 800;
     private int height = 800;
+    private GameUser user;
 
-    public Player(int initialX, int initialY, int width, int height, Image img) {
+    public Player(GameUser user, int initialX, int initialY, int width, int height) {
+        this.user = user;
         x = initialX - width / 2;
         y = initialY - height;
         w = width;
         h = height;
-        playerImg = img;
+        playerImg = user.getImg();
+        this.user.initMiniGameScore(); // 시작 시 미니게임 점수 초기화
     }
 
     public int getX() {
@@ -48,6 +54,10 @@ public class Player extends JLabel {
 
     public int getHeight() {
         return h;
+    }
+
+    public void addCoin(int coin) {
+        user.addCoin(coin);
     }
 
     public Image getImage() {

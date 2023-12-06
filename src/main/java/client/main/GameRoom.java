@@ -1,9 +1,10 @@
 package client.main;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class GameRoom {
+public class GameRoom implements Serializable {
 
     private int id; //
     private ArrayList<GameUser> gameUsers = new ArrayList<>();
@@ -30,14 +31,14 @@ public class GameRoom {
     }
 
     //유저가 방 만들 때
-    public GameRoom(int roomId, GameUser user, int roomCode) {
+    public GameRoom(int roomId, GameUser user) {
         this.id = roomId;
+        //this.joinNum += 1;
         createRoomCode();
 
         gameUsers.add(user);
         this.gameOwner = user;
         user.enterRoom(this);
-        this.joinNum += 1;
         this.startTime = LocalDateTime.now();
     }
 
@@ -65,7 +66,7 @@ public class GameRoom {
 
     // 유저를 게임룸으로 입장시킴
     public void enterUser(GameUser user) {
-        user.enterRoom(this);
+        //user.enterRoom(this);
         this.gameUsers.add(user);
     }
 
@@ -114,12 +115,12 @@ public class GameRoom {
             //각 유저에세 데이터를 전송하는 메서드 호출
             // ex) user.SendData(data);
 
-//			try {
-//				user.sock.getOutputStream().write(data); // 이런식으로 바이트배열을 보낸다.
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+//         try {
+//            user.sock.getOutputStream().write(data); // 이런식으로 바이트배열을 보낸다.
+//         } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//         }
 
         }
     }
@@ -154,6 +155,10 @@ public class GameRoom {
         return joinNum;
     }
 
+    public void plusJoinNum(int i) {
+        this.joinNum += i;
+    }
+
     public LocalDateTime getStartTime() {
         return startTime;
     }
@@ -172,4 +177,6 @@ public class GameRoom {
     public int hashCode() {
         return id;
     }
+
+
 }

@@ -1,5 +1,6 @@
 package client.main.social;
 
+import client.main.GameUser;
 import client.main.member.Member;
 import client.main.socket.ClientThread;
 
@@ -14,6 +15,7 @@ public class MainScreen extends JFrame {
     private login login;
     private JPanel main;
     private JTextField codeInput;
+    private ClientThread clientThread;
 
     // 이미지 크기 조절 메서드
     private Image resizeImage(Image originalImage, int width, int height) {
@@ -87,8 +89,9 @@ public class MainScreen extends JFrame {
         createRbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ClientThread th = new ClientThread(member, "CREATE_ROOM");
-                th.start();
+                clientThread = new ClientThread(member, "CREATE_ROOM");
+                clientThread.start();
+                new readyRoom(clientThread,new GameUser(member));
             }
         });
 
@@ -103,8 +106,10 @@ public class MainScreen extends JFrame {
                     try {
                         int code = Integer.parseInt(inviteCode);
                         member.setJoinCode(code);
-                        ClientThread th = new ClientThread(member, "JOIN_ROOM");
-                        th.start();
+                        clientThread = new ClientThread(member, "JOIN_ROOM");
+                        clientThread.start();
+                        new readyRoom(clientThread,new GameUser(member));
+
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "숫자로 변환할 수 없는 초대코드입니다.");
                     }
